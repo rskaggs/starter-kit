@@ -196,12 +196,4 @@ module.exports = function(grunt) {
 	for (var key in projectOptions.tasks) {
 		grunt.registerTask(key, projectOptions.tasks[key]);
 	}
-
-	// grunt.registerTask('default',['sass', 'requirejs']);
-	//
-	//
-	// grunt.registerTask('runSass',['sass']);
-	// grunt.registerTask('dev', ]);
-	//
-	// grunt.registerTask('prod', );
 }
