@@ -156,7 +156,7 @@ module.exports = function(grunt) {
 	// determine if we should be referencing local or server assets.
 
 	if (projectOptions.localCheck) {
-		projectOptions.config.connect.devHack = {
+		projectOptions.config.connect.localCheck = {
 			options: {
 				port: 7445,
 				base: './local-check/',
@@ -182,11 +182,26 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-concurrent');
 
-	grunt.registerTask('default',['sass', 'requirejs']);
+	projectOptions.tasks = {
+		default: ['sass', 'requirejs'],
+		runSass: ['sass'],
+		dev: ['connect:server', 'concurrent:dev'],
+		prod: ['connect:server', 'concurrent:prod']
+	}
 
+	if (projectOptions.localCheck) {
+		projectOptions.tasks.dev = ['connect:server', 'connect:devHack', 'concurrent:dev'];
+	}
 
-	grunt.registerTask('runSass',['sass']);
-	grunt.registerTask('dev', ['connect:server', 'connect:devHack', 'concurrent:dev']);
+	for (var key in projectOptions.tasks) {
+		grunt.registerTask(key, projectOptions.tasks[key]);
+	}
 
-	grunt.registerTask('prod', ['connect:server', 'concurrent:prod']);
+	// grunt.registerTask('default',['sass', 'requirejs']);
+	//
+	//
+	// grunt.registerTask('runSass',['sass']);
+	// grunt.registerTask('dev', ]);
+	//
+	// grunt.registerTask('prod', );
 }

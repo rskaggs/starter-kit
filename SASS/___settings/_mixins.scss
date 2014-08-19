@@ -177,12 +177,6 @@
 			@content;
 		}
 	}
-
-	// @each $class, $value in $map {
-	// 	.lt-ie9 .#{$class} & {
-	// 		@content;
-	// 	}
-	// }
 }
 @mixin retina {
 	@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
@@ -269,9 +263,11 @@
 }
 
 @mixin extend-icons($list) {
-	@each $icon in $list {
-		&.-#{$icon} {
-			@extend %icon-#{$icon};
+	@if $list != null {
+		@each $icon in $list {
+			&.-#{$icon} {
+				@extend %icon-#{$icon};
+			}
 		}
 	}
 }
@@ -285,6 +281,7 @@
 		@content;
 	}
 }
+
 @mixin sitefinity {
 	.sfPageEditor & {
 		@content;

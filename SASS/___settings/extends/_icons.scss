@@ -1,5 +1,3 @@
-
-@if variable-exists($icons) {
 %icon-styles {
 	font-family: 'odu-icons';
 	speak: none;
@@ -68,5 +66,4 @@
 		}
 	}
 	@include extend-icons($icon-all-list);
-}
 }
