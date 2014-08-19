@@ -1,0 +1,292 @@
+@mixin twoColorGradient($top, $bottom, $fallback: true) {
+	@if $fallback == true {
+		background:mix($top, $bottom);
+	}
+	background: -ms-linear-gradient(top, $top 0%, $bottom 100%);
+	background: -moz-linear-gradient(top, $top 0%, $bottom 100%);
+	background: -o-linear-gradient(top, $top 0%, $bottom 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, $top), color-stop(1, $bottom));
+	background: -webkit-linear-gradient(top, $top 0%, $bottom 100%);
+	background: linear-gradient(to bottom, $top 0%, $bottom 100%);
+}
+@mixin threeColorGradient($top, $middle, $bottom, $direction: 'v', $fallback: true) {
+	@if $fallback == true {
+		.lt-ie10 & {
+			background:mix($top, $bottom);
+		}
+	}
+	@if $direction == 'v' {
+		background: -ms-linear-gradient(top, $top 0%, $middle 50%, $bottom 100%);
+		background: -moz-linear-gradient(top, $top 0%, $middle 50%, $bottom 100%);
+		background: -o-linear-gradient(top, $top 0%, $middle 50%, $bottom 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0, $top), color-stop(.5, $middle), color-stop(1, $bottom));
+		background: -webkit-linear-gradient(top, $top 0%, $middle 50%,$bottom 100%);
+		background: linear-gradient(to bottom, $top 0%, $middle 50%, $bottom 100%);
+	} @else {
+		background-image: -ms-linear-gradient(left, $top 0%, $middle 50%, $bottom 100%);
+		background-image: -moz-linear-gradient(left, $top 0%, $middle 50%, $bottom 100%);
+		background-image: -o-linear-gradient(left, $top 0%, $middle 50%, $bottom 100%);
+		background-image: -webkit-gradient(linear, left top, right top, color-stop(0, $top), color-stop(0.5, $middle), color-stop(1, $bottom));
+		background-image: -webkit-linear-gradient(left, $top 0%, $middle 50%, $bottom 100%);
+		background-image: linear-gradient(to right, $top 0%, $middle 50%, $bottom 100%);
+	}
+
+
+}
+
+@mixin transition($speed, $type:linear, $target:all) {
+	$transVal: null;
+	@if length($target) > 1 {
+		$transVal: mergeList($target, '', '#{$speed} #{$type}');
+	} @else {
+		$transVal: $target $speed $type;
+	}
+	-webkit-transition: $transVal;
+	-moz-transition: $transVal;
+	-o-transition: $transVal;
+	transition: $transVal;
+}
+
+@mixin multi-transition($transVal) {
+	$transVal: unquote($transVal);
+	-webkit-transition: $transVal;
+	-moz-transition: $transVal;
+	-o-transition: $transVal;
+	transition: $transVal;
+}
+
+@mixin removeTransition($important: false) {
+	@if $important {
+		-moz-transition: none      !important;
+	    -webkit-transition: none   !important;
+	    -o-transition: all 0 none  !important;
+	    transition: none           !important;
+	} @else {
+		-moz-transition: none;
+	    -webkit-transition: none;
+	    -o-transition: all 0 none;
+	    transition: none;
+    }
+}
+@mixin bp($width) {
+	$compareWidth: strip-units($width);
+	@media only screen and (min-width: $width) {
+		@content;
+	}
+	@if ($compareWidth >= 160) {
+		.lt-ie9 .bp-160 & {
+			@content;
+		}
+	}
+	@else if ($compareWidth >= 150) {
+		.lt-ie9 .bp-150 &, .lt-ie9 .bp-160 & {
+			@content;
+		}
+	}
+	@else if ($compareWidth >= 140) {
+		.lt-ie9 .bp-140 &, .lt-ie9 .bp-150 &, .lt-ie9 .bp-160 & {
+			@content;
+		}
+	}
+	@else if ($compareWidth >= 130) {
+		.lt-ie9 .bp-130 &, .lt-ie9 .bp-140 &, .lt-ie9 .bp-150 &, .lt-ie9 .bp-160 & {
+			@content;
+		}
+	}
+	@else if ($compareWidth >= 120) {
+		.lt-ie9 .bp-120 &,
+		.lt-ie9 .bp-130 &, .lt-ie9 .bp-140 &, .lt-ie9 .bp-150 &, .lt-ie9 .bp-160 & {
+			@content;
+		}
+	}
+	@else if ($compareWidth >= 110) {
+		.lt-ie9 .bp-110 &, .lt-ie9 .bp-120 &,
+		.lt-ie9 .bp-130 &, .lt-ie9 .bp-140 &, .lt-ie9 .bp-150 &, .lt-ie9 .bp-160 & {
+			@content;
+		}
+	}
+	@else if ($compareWidth >= 100) {
+		.lt-ie9 .bp-100 &, .lt-ie9 .bp-110 &, .lt-ie9 .bp-120 &,
+		.lt-ie9 .bp-130 &, .lt-ie9 .bp-140 &, .lt-ie9 .bp-150 &, .lt-ie9 .bp-160 & {
+			@content;
+		}
+	}
+	@else if ($compareWidth >= 90) {
+		.lt-ie9 .bp-90 &, .lt-ie9 .bp-100 &, .lt-ie9 .bp-110 &, .lt-ie9 .bp-120 &,
+		.lt-ie9 .bp-130 &, .lt-ie9 .bp-140 &, .lt-ie9 .bp-150 &, .lt-ie9 .bp-160 & {
+			@content;
+		}
+	}
+	@else if ($compareWidth >= 80) {
+		.lt-ie9 .bp-80 &,
+		.lt-ie9 .bp-90 &, .lt-ie9 .bp-100 &, .lt-ie9 .bp-110 &, .lt-ie9 .bp-120 &,
+		.lt-ie9 .bp-130 &, .lt-ie9 .bp-140 &, .lt-ie9 .bp-150 &, .lt-ie9 .bp-160 & {
+			@content;
+		}
+	}
+	@else if ($compareWidth >= 70) {
+		.lt-ie9 .bp-70 &, .lt-ie9 .bp-80 &,
+		.lt-ie9 .bp-90 &, .lt-ie9 .bp-100 &, .lt-ie9 .bp-110 &, .lt-ie9 .bp-120 &,
+		.lt-ie9 .bp-130 &, .lt-ie9 .bp-140 &, .lt-ie9 .bp-150 &, .lt-ie9 .bp-160 & {
+			@content;
+		}
+	}
+	@else if ($compareWidth >= 60) {
+		.lt-ie9 .bp-60 &, .lt-ie9 .bp-70 &, .lt-ie9 .bp-80 &,
+		.lt-ie9 .bp-90 &, .lt-ie9 .bp-100 &, .lt-ie9 .bp-110 &, .lt-ie9 .bp-120 &,
+		.lt-ie9 .bp-130 &, .lt-ie9 .bp-140 &, .lt-ie9 .bp-150 &, .lt-ie9 .bp-160 & {
+			@content;
+		}
+	}
+	@else if ($compareWidth >= 50) {
+		.lt-ie9 .bp-50 &, .lt-ie9 .bp-60 &, .lt-ie9 .bp-70 &, .lt-ie9 .bp-80 &,
+		.lt-ie9 .bp-90 &, .lt-ie9 .bp-100 &, .lt-ie9 .bp-110 &, .lt-ie9 .bp-120 &,
+		.lt-ie9 .bp-130 &, .lt-ie9 .bp-140 &, .lt-ie9 .bp-150 &, .lt-ie9 .bp-160 & {
+			@content;
+		}
+	}
+	@else if ($compareWidth >= 40) {
+		.lt-ie9 .bp-40 &,
+		.lt-ie9 .bp-50 &, .lt-ie9 .bp-60 &, .lt-ie9 .bp-70 &, .lt-ie9 .bp-80 &,
+		.lt-ie9 .bp-90 &, .lt-ie9 .bp-100 &, .lt-ie9 .bp-110 &, .lt-ie9 .bp-120 &,
+		.lt-ie9 .bp-130 &, .lt-ie9 .bp-140 &, .lt-ie9 .bp-150 &, .lt-ie9 .bp-160 & {
+			@content;
+		}
+	}
+	@else if ($compareWidth >= 30) {
+		.lt-ie9 .bp-30 &, .lt-ie9 .bp-40 &,
+		.lt-ie9 .bp-50 &, .lt-ie9 .bp-60 &, .lt-ie9 .bp-70 &, .lt-ie9 .bp-80 &,
+		.lt-ie9 .bp-90 &, .lt-ie9 .bp-100 &, .lt-ie9 .bp-110 &, .lt-ie9 .bp-120 &,
+		.lt-ie9 .bp-130 &, .lt-ie9 .bp-140 &, .lt-ie9 .bp-150 &, .lt-ie9 .bp-160 & {
+			@content;
+		}
+	}
+	@else if ($compareWidth >= 20) {
+		.lt-ie9 .bp-20 &, .lt-ie9 .bp-30 &, .lt-ie9 .bp-40 &,
+		.lt-ie9 .bp-50 &, .lt-ie9 .bp-60 &, .lt-ie9 .bp-70 &, .lt-ie9 .bp-80 &,
+		.lt-ie9 .bp-90 &, .lt-ie9 .bp-100 &, .lt-ie9 .bp-110 &, .lt-ie9 .bp-120 &,
+		.lt-ie9 .bp-130 &, .lt-ie9 .bp-140 &, .lt-ie9 .bp-150 &, .lt-ie9 .bp-160 & {
+			@content;
+		}
+	}
+	@else if ($compareWidth >= 10) {
+		.lt-ie9 .bp-10 &, .lt-ie9 .bp-20 &, .lt-ie9 .bp-30 &, .lt-ie9 .bp-40 &,
+		.lt-ie9 .bp-50 &, .lt-ie9 .bp-60 &, .lt-ie9 .bp-70 &, .lt-ie9 .bp-80 &,
+		.lt-ie9 .bp-90 &, .lt-ie9 .bp-100 &, .lt-ie9 .bp-110 &, .lt-ie9 .bp-120 &,
+		.lt-ie9 .bp-130 &, .lt-ie9 .bp-140 &, .lt-ie9 .bp-150 &, .lt-ie9 .bp-160 & {
+			@content;
+		}
+	}
+
+	// @each $class, $value in $map {
+	// 	.lt-ie9 .#{$class} & {
+	// 		@content;
+	// 	}
+	// }
+}
+@mixin retina {
+	@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+	       only screen and (min-resolution: 144dpi),
+	       only screen and (min-resolution: 1.5dppx) {
+		@content;
+	}
+}
+@mixin bp-retina($width) {
+	@media only screen and (min-width: $width) and (-webkit-min-device-pixel-ratio: 1.5),
+		   only screen and (min-width: $width) and (min-resolution: 144dpi),
+	       only screen and (min-width: $width) and (min-resolution: 1.5dppx){
+	    @content;
+	}
+}
+
+@mixin clear-after-fix {
+	&:after {
+		content: '';
+		display: block;
+		clear:both;
+	}
+}
+@mixin border-arrow($direction, $size, $color) {
+	border: $size solid transparent;
+	@if $direction == up {
+		border-top: none;
+		border-bottom: $size solid $color;
+	} @else if $direction == down {
+		border-bottom: none;
+		border-top: $size solid $color;
+	} @else if $direction == left {
+		border-left: none;
+		border-right: $size solid $color;
+	} @else if $direction == right {
+		border-right: none;
+		border-left: $size solid $color;
+	}
+}
+
+
+
+@mixin perspective($perspective: 500px) {
+  -webkit-perspective: $perspective;
+     -moz-perspective: $perspective;
+      -ms-perspective: $perspective;
+          perspective: $perspective;
+}
+@mixin rotateY($rotateY) {
+  -webkit-transform: rotateY($rotateY);  -webkit-transform-style: preserve-3d;
+     -moz-transform: rotateY($rotateY);     -moz-transform-style: preserve-3d;
+      -ms-transform: rotateY($rotateY);      -ms-transform-style: preserve-3d;
+          transform: rotateY($rotateY);          transform-style: preserve-3d;
+}
+@mixin rotate($rotateX) {
+  -webkit-transform: rotate($rotateX);
+     -moz-transform: rotate($rotateX);
+      -ms-transform: rotate($rotateX);
+          transform: rotate($rotateX);
+}
+@mixin extends-icons($list) {
+	@each $icon in $list {
+		&.-#{$icon} {
+			@extend %icon-#{$icon};
+		}
+	}
+}
+@mixin placeholder {
+	&::-webkit-input-placeholder {
+	   @content;
+	}
+
+	&:-moz-placeholder { /* Firefox 18- */
+	   @content;
+	}
+
+	&::-moz-placeholder {  /* Firefox 19+ */
+	   @content;
+	}
+
+	&:-ms-input-placeholder {
+	   @content;
+	}
+}
+
+@mixin extend-icons($list) {
+	@each $icon in $list {
+		&.-#{$icon} {
+			@extend %icon-#{$icon};
+		}
+	}
+}
+
+@mixin keyframes($name) {
+	@keyframes #{$name} {
+		@content;
+	}
+
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+}
+@mixin sitefinity {
+	.sfPageEditor & {
+		@content;
+	}
+}

@@ -1,0 +1,16 @@
+a {
+	@extend %reset-main;
+	cursor: pointer;
+}
+details {
+	@extend %reset-main;
+}
+summary {
+	@extend %reset-main;
+}
+menu {
+	@extend %reset-main;
+}
+menuitem {
+	@extend %reset-font;
+}

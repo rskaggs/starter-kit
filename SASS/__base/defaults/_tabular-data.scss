@@ -1,0 +1,25 @@
+table {
+	@extend %reset-main;
+	@extend %reset-table;
+}
+caption {
+	@extend %reset-main;
+}
+tbody {
+	@extend %reset-main;
+}
+thead {
+	@extend %reset-main;
+}
+tfoot {
+	@extend %reset-main;
+}
+tr {
+	@extend %reset-main;
+}
+td {
+	@extend %reset-main;
+}
+th {
+	@extend %reset-main;
+}

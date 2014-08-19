@@ -1,0 +1,35 @@
+cite {
+	@extend %reset-main;
+}
+q {
+	@extend %reset-main;
+	@extend %reset-quotes;
+}
+dfn {
+	@extend %reset-main;
+}
+abbr {
+	@extend %reset-main;
+}
+sub {
+	@extend %reset-main;
+}
+sup {
+	@extend %reset-main;
+}
+mark {
+	@extend %reset-main;
+}
+ruby {
+	@extend %reset-main;
+}
+ins {
+	@extend %reset-main;
+}
+del {
+	@extend %reset-main;
+	text-decoration: line-through;
+}
+hr {
+	@extend %reset-main;
+}

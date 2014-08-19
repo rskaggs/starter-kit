@@ -1,0 +1,20 @@
+ol {
+	@extend %reset-main;
+	@extend %reset-list;
+}
+ul {
+	@extend %reset-main;
+	@extend %reset-list;
+}
+li {
+	@extend %reset-main;
+}
+dl {
+	@extend %reset-main;
+}
+dt {
+	@extend %reset-main;
+}
+dd {
+	@extend %reset-main;
+}

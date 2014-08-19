@@ -1,0 +1,37 @@
+@function em($px, $base: 16px) {
+    @return ($px / $base) * 1em;
+}
+@function col($dividedBy, $devided: 100) {
+     @return (($devided / $dividedBy) * 1%);
+}
+@function percent($dividedBy, $devided) {
+     @return (($devided / $dividedBy) * 100%);
+}
+@function ptToEm($pt, $base: 12pt) {
+	@return ($pt / $base) * 1em;
+}
+@function mergeList($list, $prefix:"", $suffix:"") {
+	$returnedList: #{$prefix} nth($list, 1) #{$suffix};
+	@for $i from 2 through length($list) {
+		$returnedList: append($returnedList, #{$prefix} nth($list, $i) #{$suffix}, comma);
+	}
+	@return $returnedList;
+}
+@function imageUrl($image) {
+	@return url(unquote('../../../images/' + $image));
+}
+@function fontUrl($font) {
+	@return url('../../../fonts/' + $font);
+}
+@function strip-units($number) {
+ 	@return $number / ($number * 0 + 1);
+}
+@function generate-breakpoints() {
+    $i: 10;
+    $map: ();
+    @while $i < 170 {
+        $map: map-merge($map, (bp-#{$i}: $i));
+        $i: $i + 10;
+    }
+    @return $map;
+}

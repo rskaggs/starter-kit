@@ -1,0 +1,72 @@
+
+@if variable-exists($icons) {
+%icon-styles {
+	font-family: 'odu-icons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+	line-height: 1;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+%icon {
+    text-decoration: none;
+	&:before {
+		@extend %icon-styles;
+	}
+}
+%icon-after {
+    text-decoration: none;
+	&:after {
+		@extend %icon-styles;
+	}
+}
+@each $icon-name, $icon-value in $icons {
+	%icon-#{$icon-name} {
+		@extend %icon;
+		&:before {
+			content: quote(str-slice("\x",1,1) + $icon-value);
+		}
+	}
+	%icon-#{$icon-name}-after {
+		@extend %icon-after;
+		&:after {
+			content: quote(str-slice("\x",1,1) + $icon-value);
+		}
+	}
+}
+%only-icon {
+	padding: 1.1em 0 0 1.5em;
+	white-space: nowrap;
+	text-indent: 200%;
+	overflow: hidden;
+	width: 0;
+	height: 0;
+	display: inline-block;
+	position: relative;
+    text-decoration: none;
+	&:before {
+		position: absolute;
+		top:0;
+		left:0;
+		bottom: 0;
+		right:0;
+		text-align: center;
+	}
+}
+%icon-all {
+	$icon-all-list: null;
+	@each $icon-name, $icon-value in $icons {
+		@if not $icon-all-list {
+			$icon-all-list: $icon-name;
+		} @else {
+			$icon-all-list: append($icon-all-list, $icon-name);
+		}
+	}
+	@include extend-icons($icon-all-list);
+}
+}

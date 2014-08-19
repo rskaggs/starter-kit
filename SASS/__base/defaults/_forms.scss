@@ -1,0 +1,39 @@
+form {
+	@extend %reset-main;
+}
+fieldset {
+	@extend %reset-main;
+}
+legend {
+	@extend %reset-main;
+}
+label {
+	@extend %reset-main;
+}
+input {
+	@extend %reset-font;
+	&[type="search"] {
+		@extend %reset-form-appearance;
+	}
+}
+button {
+	@extend %reset-font;
+}
+select {
+	@extend %reset-font;
+}
+textarea {
+	@extend %reset-font;
+}
+datalist {
+	@extend %reset-font;
+}
+keygen {
+	@extend %reset-font;
+}
+output {
+	@extend %reset-main;
+}
+meter {
+	@extend %reset-font;
+}

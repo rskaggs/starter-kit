@@ -1,0 +1,37 @@
+html {
+	@extend %reset-main;
+}
+body {
+	@extend %reset-main;
+}
+article {
+	@extend %reset-main;
+	@extend %reset-block;
+}
+aside {
+	@extend %reset-main;
+	@extend %reset-block;
+}
+address {
+	@extend %reset-main;
+}
+footer {
+	@extend %reset-main;
+	@extend %reset-block;
+}
+header {
+	@extend %reset-main;
+	@extend %reset-block;
+}
+main {
+	@extend %reset-main;
+	@extend %reset-block;
+}
+nav {
+	@extend %reset-main;
+	@extend %reset-block;
+}
+section {
+	@extend %reset-main;
+	@extend %reset-block;
+}

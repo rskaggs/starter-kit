@@ -1,0 +1,14 @@
+em {
+	@extend %reset-main;
+	font-style: italic;
+}
+strong {
+	@extend %reset-main;
+	font-weight: 700;
+}
+time {
+	@extend %reset-main;
+}
+span {
+	@extend %reset-main;
+}

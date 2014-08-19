@@ -1,0 +1,12 @@
+i {
+	@extend em;
+}
+b {
+	@extend strong;
+}
+u {
+	@extend %reset-main;
+}
+s {
+	@extend %reset-main;
+}

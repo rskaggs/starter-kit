@@ -1,0 +1,21 @@
+blockquote {
+	@extend %reset-main;
+	@extend %reset-quotes;
+}
+div {
+	@extend %reset-main;
+}
+figure {
+	@extend %reset-main;
+	@extend %reset-block;
+}
+figcaption {
+	@extend %reset-main;
+	@extend %reset-block;
+}
+p {
+	@extend %reset-main;
+}
+pre {
+	@extend %reset-main;
+}
